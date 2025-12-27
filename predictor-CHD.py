@@ -52,7 +52,7 @@ if st.button("Predict"):
 
     # 根据预测结果生成建议
     # 如果预测类别为 1（高风险）
-    if float(predicted_proba[1])>explainer_shap.expected_value[1]:
+    if predicted_class==1:
         probability = predicted_proba[1] * 100
         advice = (
             f"According to our model, you have a high risk of CHD. "
@@ -76,7 +76,7 @@ if st.button("Predict"):
     # 解释类别 1（患病）的 SHAP 值
     # 特征值数据
     # 使用 Matplotlib 绘图
-    shap.force_plot(explainer_shap.expected_value[1], shap_values[:, :, 1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
+    shap.force_plot(explainer_shap.expected_value, shap_values, pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
     # 期望值（基线值）
     # 解释类别 0（未患病）的 SHAP 值
     # 特征值数据
