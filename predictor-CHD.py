@@ -41,8 +41,8 @@ feature_names = ["QDC","YaDC", "PDC", "Age", "Educationlevel", "CO", "BMI", "Smo
 
 #Streamlit 用户界面
 st.title("CHD Risk Prediction")
-QDC = st.selectbox("Balanced constitution (QDC):", options=[0, 1])
-YaDC = st.selectbox("Yin-deficiency constitution (YaDC):", options=[0, 1])
+QDC = st.selectbox("Qi-deficiency constitution (QDC):", options=[0, 1])
+YaDC = st.selectbox("Yang-deficiency constitution (YaDC):", options=[0, 1])
 PDC = st.selectbox("Phlegm-dampness constitution (PDC):", options=[0, 1])
 Age = st.selectbox("Age:", options=[0, 1,2])
 Educationlevel = st.selectbox("Educationlevel:", options=[0, 1,2])
