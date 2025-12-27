@@ -76,6 +76,7 @@ if st.button("Predict"):
     # 解释类别 1（患病）的 SHAP 值
     # 特征值数据
     # 使用 Matplotlib 绘图
+    st.write(explainer_shap.expected_value)
     shap.force_plot(explainer_shap.expected_value, shap_values, pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
     # 期望值（基线值）
     # 解释类别 0（未患病）的 SHAP 值
