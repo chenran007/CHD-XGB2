@@ -1,43 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
-
-
 import streamlit as st
-
 import joblib
-
 import pandas as pd
-
 import numpy as np
-
 import shap
-
 import matplotlib.pyplot as plt
-
-
-# In[5]:
-
 
 model = joblib.load('xgb.pkl')
 
-
-# In[7]:
-
-
 X_test = pd.read_csv('X_test_CHD.csv')
-
-
-# In[17]:
-
 
 #定义特征名称，对应数据集中的列名
 feature_names = ["QDC","YaDC", "PDC", "Age", "Educationlevel", "CO", "BMI", "Smokingstatus","Depression","Frailty","Hyperlipidemia", "Hypertenion","Diabetes"]
-
-
-# In[19]:
-
 
 #Streamlit 用户界面
 st.title("CHD Risk Prediction")
@@ -54,10 +30,6 @@ Frailty = st.selectbox("Frailty:", options=[0, 1,2])
 Hyperlipidemia = st.selectbox("Hyperlipidemia:", options=[0, 1])
 Hypertension = st.selectbox("Hypertension:", options=[0, 1])
 Diabetes = st.selectbox("Diabetes:", options=[0, 1])
-
-
-# In[23]:
-
 
 # 实现输入数据并进行预测
 feature_values = [QDC,YaDC, PDC, Age, Educationlevel, CO, BMI, Smokingstatus, Depression, Frailty, Hyperlipidemia, Hypertension, Diabetes]  # 将用户输入的特征值存入列表
@@ -111,10 +83,3 @@ if st.button("Predict"):
     # 使用 Matplotlib 绘图 
     #plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     st.pyplot(plt.gcf(), use_container_width=True)
-
-
-# In[ ]:
-
-
-
-
