@@ -15,21 +15,27 @@ X_test = pd.read_csv('X_test_CHD.csv')
 #定义特征名称，对应数据集中的列名
 feature_names = ["QDC","YaDC", "PDC", "Age", "Educationlevel", "CO", "BMI", "Smokingstatus","Depression","Frailty","Hyperlipidemia", "Hypertenion","Diabetes"]
 
+BOOL = {"Yes":1, "No":0}
+AGE = {"60-69":0, "70-79":1, "≥80":2}
+EDUCATION= {"Primary education":0, "Secondary education":1, "Tertiary education":2}
+FRAILTY= {"Strong":0, "Prefrailty":1, "frailty":2}
+BMIV = {"18.5≤BMI<24":0, "<18.5":1, "24≤BMI<28":2, "≥28":3}
+
 #Streamlit 用户界面
 st.title("CHD Risk Prediction")
-QDC = st.selectbox("Qi-deficiency constitution (QDC):", options=[0, 1])
-YaDC = st.selectbox("Yang-deficiency constitution (YaDC):", options=[0, 1])
-PDC = st.selectbox("Phlegm-dampness constitution (PDC):", options=[0, 1])
-Age = st.selectbox("Age:", options=[0, 1,2])
-Educationlevel = st.selectbox("Educationlevel:", options=[0, 1,2])
-CO = st.selectbox("Central obesity (CO):", options=[0, 1])
-BMI = st.selectbox("Body Mass Index (BMI):", options=[0,1,2,3])
-Smokingstatus = st.selectbox("Smokingstatus:", options=[0, 1])
-Depression = st.selectbox("Depression:", options=[0, 1])
-Frailty = st.selectbox("Frailty:", options=[0, 1,2])
-Hyperlipidemia = st.selectbox("Hyperlipidemia:", options=[0, 1])
-Hypertension = st.selectbox("Hypertension:", options=[0, 1])
-Diabetes = st.selectbox("Diabetes:", options=[0, 1])
+QDC = BOOL[st.selectbox("Qi-deficiency constitution (QDC):", options=BOOL)]
+YaDC = BOOL[st.selectbox("Yang-deficiency constitution (YaDC):", options=BOOL)]
+PDC = BOOL[st.selectbox("Phlegm-dampness constitution (PDC):", options=BOOL)]
+Age = AGE[st.selectbox("Age:", options=AGE)]
+Educationlevel = EDUCATION[st.selectbox("Educationlevel:", options=EDUCATION)]
+CO = BOOL[st.selectbox("Central obesity (CO):", options=BOOL)]
+BMI = BMIV[st.selectbox("Body Mass Index (BMI):", options=BMIV)]
+Smokingstatus = BOOL[st.selectbox("Smokingstatus:", options=BOOL)]
+Depression = BOOL[st.selectbox("Depression:", options=BOOL)]
+Frailty = FRAILTY[st.selectbox("Frailty:", options=FRAILTY)]
+Hyperlipidemia = BOOL[st.selectbox("Hyperlipidemia:", options=BOOL)]
+Hypertension = BOOL[st.selectbox("Hypertension:", options=BOOL)]
+Diabetes = BOOL[st.selectbox("Diabetes:", options=BOOL)]
 
 # 实现输入数据并进行预测
 feature_values = [QDC,YaDC, PDC, Age, Educationlevel, CO, BMI, Smokingstatus, Depression, Frailty, Hyperlipidemia, Hypertension, Diabetes]  # 将用户输入的特征值存入列表
